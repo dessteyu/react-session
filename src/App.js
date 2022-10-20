@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Button from "./components/button/button";
+import { View } from "./components/viewer/viewer";
 
 function App() {
+  const [count, setCounter] = React.useState(0);
+  React.useEffect(() => {
+    setCounter(1)
+  }, [])
+  const clicked = ()=> setCounter(count +1)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <View count={ count } />
+      <Button name="Click!!" onClick={clicked} />
     </div>
   );
 }
