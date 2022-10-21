@@ -1,19 +1,23 @@
 import React from "react";
 
-export function View(props) {
+export function View({ children, ...props }) {
   return (
     <div
       style={{
         padding: 8,
-        width: '100px',
-        backgroundColor: "red",
+        backgroundColor: "bisque",
         color: "white",
-        borderRadius: "50%",
         textAlign: "center",
         margin: 8,
+        display: "flex",
+        alignItems: "center",
+        fontSize: 24,
+        fontWeight: "bold",
+        justifyContent: "center",
       }}
+      {...props}
     >
-      {props.count}
+      {children}
     </div>
   );
 }
