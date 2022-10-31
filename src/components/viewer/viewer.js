@@ -21,3 +21,5 @@ export function View({ children, ...props }) {
     </div>
   );
 }
+
+export default View;
