@@ -1,0 +1,27 @@
+[
+    {
+        "firstname": "Arnod",
+        "lastname": "Hanma",
+        "branch": "biology"
+    },
+    {
+        "firstname": "Aya",
+        "lastname": "Lee",
+        "branch": "computer science"
+    },
+    {
+        "firstname": "Mass",
+        "lastname": "Dione",
+        "branch": "math"
+    },
+    {
+        "firstname": "Amy",
+        "lastname": "Am",
+        "branch": "Sport"
+    },
+    {
+        "firstname": "Ann",
+        "lastname": "Faye",
+        "branch": "sociology"
+    }
+]
