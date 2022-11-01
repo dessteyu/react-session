@@ -22,6 +22,7 @@ const PrivateRoutes = () => {
       <Routes>
         <Route path="students" element={<Students />} />
         <Route path="teachers" element={<Teachers />} />
+        {/* <Route path="/" element={<Teachers />} /> */}
       </Routes>
     );
 }

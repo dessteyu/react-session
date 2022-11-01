@@ -4,7 +4,6 @@ import ProviderData from "./context/contextData";
 import AppRoutes from "./routes";
 function App() {
 
-
   return (
     <ProviderData>
       <BrowserRouter>
