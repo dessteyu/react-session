@@ -1,8 +1,10 @@
 import React from "react";
-import { getTeachers } from "../../service";
+
 import styled from "styled-components";
 import { DataContext } from "../../context/contextData";
 import { Link } from "react-router-dom";
+import {useSelector, useDispatch} from "react-redux"
+import { fetchTeachersData } from "../../redux/actions";
 export const Nav = styled.div`
   padding: 8px;
   margin: 8px;
@@ -16,10 +18,11 @@ export const NavButton = styled.div`
   cursor: pointer;
 `;
 export function Teachers() {
-  const [teachers, setTeachers] = React.useState([]);
+  const teachers = useSelector(state => state.myReducers.teachers)
+  const dispatch = useDispatch()
   const { setIsAuth } = React.useContext(DataContext);
   React.useEffect(() => {
-    getTeachers().then((data) => setTeachers(data));
+    dispatch(fetchTeachersData())
   }, []);
 
   const disconnect = () => {
@@ -35,7 +38,7 @@ export function Teachers() {
       </Nav>
 
       {teachers.map((teacher) => (
-        <div> {teacher.firstname} </div>
+        <div key={teacher.firstname}> {teacher.firstname} </div>
       ))}
     </div>
   );

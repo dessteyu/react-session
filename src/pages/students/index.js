@@ -1,32 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import View from "../../components/viewer/viewer";
 import { DataContext } from "../../context/contextData";
-import { getStduents } from "../../service";
 import { Nav, NavButton } from "../teachers";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchStudentsData } from "../../redux/actions";
 
 export function Students() {
-    const [students, setStudents] = React.useState([]);
-    const { setIsAuth } = React.useContext(DataContext);
+  const { setIsAuth } = React.useContext(DataContext);
+  const dispatch = useDispatch();
+  const students = useSelector((state) => state.myReducers.students);
+  React.useEffect(() => {
+    dispatch(fetchStudentsData());
+  }, [setIsAuth]);
 
-    React.useEffect(() => {
-        getStduents().then(data => setStudents(data))
-    }, [])
-    
-    return (
+  return (
+    <div>
+      <Nav>
+        <NavButton>
+          <Link to="/teachers">teachers </Link>{" "}
+        </NavButton>
+        <NavButton onClick={() => setIsAuth(false)}>disconnect</NavButton>
+      </Nav>
       <div>
-        <Nav>
-          <NavButton><Link to="/teachers">teachers </Link> </NavButton>
-          <NavButton onClick={()=> setIsAuth(false)} >disconnect</NavButton>
-        </Nav>
-        <div>
-          
-          {students.map((student) => (
-            <div> {student.firstname} </div>
-          ))}
-        </div>
+        {(students || []).map((student) => (
+          <div key={student.firstname}> {student.firstname} </div>
+        ))}
       </div>
-    );
+    </div>
+  );
 }
 
 export default Students;
